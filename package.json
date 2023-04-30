@@ -1,0 +1,35 @@
+{
+  "name": "log-likho",
+  "version": "1.0.0",
+  "description": "console.log on steroids",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/options.spec.js && node ./test/default.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeetishRaj/log-likho.git"
+  },
+  "keywords": [
+    "logger",
+    "file",
+    "logger",
+    "log",
+    "nodejs",
+    "simple",
+    "logger",
+    "in",
+    "nodejs",
+    "easy",
+    "logging",
+    "one",
+    "line",
+    "logger"
+  ],
+  "author": "Neetish Raj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NeetishRaj/log-likho/issues"
+  },
+  "homepage": "https://github.com/NeetishRaj/log-likho#readme"
+}
