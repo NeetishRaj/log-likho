@@ -1,4 +1,4 @@
-const { create_logger } = require('../index');
+const create_logger = require('../index');
 
 console.log = create_logger({
   logs_folder: `${process.cwd()}/logger`,

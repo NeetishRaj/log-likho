@@ -1,4 +1,4 @@
-console.log = require('../index');
+console.log = require('../index')();
 
 console.log('testing 1');
 

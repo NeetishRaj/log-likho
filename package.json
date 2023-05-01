@@ -1,10 +1,10 @@
 {
   "name": "log-likho",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "console.log on steroids",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/options.spec.js && node ./test/default.spec.js"
+    "test": "node ./test/default.spec.js && node ./test/options.spec.js"
   },
   "repository": {
     "type": "git",
