@@ -1,8 +1,8 @@
 const fs = require("fs");
 const util = require("util");
 
-const default_options = require('./log_options');
-
+const default_options = require('./log-options');
+const { dd_month_yyyy_day } = require('./utils/date-formats');
 
 const log_stdout = process.stdout;
 
@@ -22,9 +22,7 @@ const create_logger = (options = {}) => {
     console.log(`Created '${logs_folder}' folder`);
   }
 
-  const log_output_path = `${logs_folder}/${new Date()
-    .toDateString()
-    .replaceAll(" ", "-")}.log`;
+  const log_output_path = `${logs_folder}/${dd_month_yyyy_day()}.log`;
 
   const log_file = fs.createWriteStream(log_output_path, { flags: mode });
 
