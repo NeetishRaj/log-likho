@@ -11,6 +11,6 @@ Before creating any Pull requests please follow the guidelines.
 3. Script to archive the logs.
 
 ## Steps to publish (For repo admins)
-```
-npm publish
-```
+
+1. Update sem-ver in `package.json`
+2. `npm publish` (2FA needed)
