@@ -40,3 +40,11 @@ console.log = create_logger({
 
 This will create log files in `my_folder` and will not delete old log for that day but instead append it with new logs.
 
+
+
+## Default options
+
+Options | Default Value | Possible values | Purpose
+--- | --- | --- | ---
+`logs_folder` | './logs' | any accessible folder | Sets the folder path where the logs will be stored
+`mode` | 'w' | 'a' or 'w' | configures how daily logs are written i.e overwriting mode with 'w' or append mode with 'a' 
