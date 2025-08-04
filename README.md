@@ -3,11 +3,12 @@ A console.log, that logs on console as well as on a file in `logs/` folder.
 Plus an advance logger with `INFO`, `WARN`, `ERROR` & `FATAL` modes.
 
 ### Simple Logger Usage
+
 ```sh
 npm install log-likho
 ```
 
-Now at the start of the code let's replace terminal only console.log with this "file + console" log function.
+Replace the normal console.log with this "file + console" log function.
 
 ```js
 console.log = require('log-likho')();
