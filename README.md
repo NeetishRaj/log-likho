@@ -1,13 +1,13 @@
 # log-likho
-Our favourite console.log, but on steroids.
+A console.log, that logs on console as well as on a file in `logs/` folder.
+Plus an advance logger with `INFO`, `WARN`, `ERROR` & `FATAL` modes.
 
-
-### Usage
-```
+### Simple Logger Usage
+```sh
 npm install log-likho
 ```
 
-Now at the start of the code let's modify console.log with this steroid version.
+Now at the start of the code let's replace terminal only console.log with this "file + console" log function.
 
 ```js
 console.log = require('log-likho')();
@@ -15,9 +15,9 @@ console.log = require('log-likho')();
 console.log('testing 1');
 ```
 
-This should do normal log to console but also write logs real-time to the logs folder
+This should do normal log to console but also write logs real-time to the `logs/` folder
 
-### Log in append mode
+##### Log in append mode
 
 ```js
 console.log = require('log-likho')({mode: 'a'});
@@ -26,25 +26,73 @@ console.log('testing 1');
 ```
 
 
-### With all the options
+##### With all the options
 
 ```js
-const create_logger = require('log-likho');
+const simple_logger = require('log-likho');
 
-console.log = create_logger({
+console.log = simple_logger({
   logs_folder: './my_folder',
   mode: "a",
 })
 
 ```
 
-This will create log files in `my_folder` and will not delete old log for that day but instead append it with new logs.
+This will create log files in `my_folder` and will not overwrite it with new logs on next executions.
 
+
+
+## Advance logger
+
+🚀 Features
+
+    ✅ Supports info, warn, error, fatal, and log levels
+
+    ✅ Colored terminal output for easy debugging
+
+    ✅ Custom log folder and file mode (append/overwrite)
+
+    ✅ No external dependencies
+
+### Usage
+
+```sh
+npm install log-likho
+```
+
+To use the logger. 
+
+```js
+const { create_logger } = require("log-likho");
+
+const logger = create_logger({
+  logs_folder: "./logs", // default: './logs'
+  mode: "a"              // append mode; use 'w' for overwrite
+});
+
+logger.info("This is an info message");
+logger.warn("This is a warning");
+logger.error("This is an error");
+logger.fatal("This is a fatal error");
+logger.log("This is a plain log message");
+```
+
+##### Output
+
+![LoggerImage](./assets/image.png)
+
+| Level | Terminal Color     |
+| ----- | ------------------ |
+| INFO  | Cyan               |
+| WARN  | Yellow             |
+| ERROR | Red                |
+| FATAL | Magenta            |
+| LOG   | Default (no color) |
 
 
 ## Default options
 
-Options | Default Value | Possible values | Purpose
---- | --- | --- | ---
-`logs_folder` | './logs' | any accessible folder | Sets the folder path where the logs will be stored
-`mode` | 'w' | 'a' or 'w' | configures how daily logs are written i.e overwriting mode with 'w' or append mode with 'a' 
+| Option        | Type   | Default  | Description                                            |
+| ------------- | ------ | -------- | ------------------------------------------------------ |
+| `logs_folder` | String | `./logs` | Directory to store log files                           |
+| `mode`        | String | `"a"`    | File write mode: `"a"` for append, `"w"` for overwrite |

@@ -1,18 +1,16 @@
 const fs = require("fs");
 const util = require("util");
 
-const default_options = require('./log-options');
-const { dd_month_yyyy_day } = require('./utils/date-formats');
+const default_options = require("./log-options");
+const { dd_month_yyyy_day } = require("./utils/date-formats");
 
 const log_stdout = process.stdout;
 
-
-const create_logger = (options = {}) => {
-
+const simple_logger = (options = {}) => {
   const final_options = {
     ...default_options,
     ...options,
-  }
+  };
 
   const { logs_folder, mode } = final_options;
 
@@ -35,4 +33,4 @@ const create_logger = (options = {}) => {
   };
 };
 
-module.exports = create_logger;
+module.exports = simple_logger;

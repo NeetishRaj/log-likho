@@ -1,10 +1,11 @@
 {
   "name": "log-likho",
-  "version": "1.2.1",
-  "description": "console.log on steroids",
+  "version": "2.0.0",
+  "description": "AA simple file + colored stdout logger for Node.js apps.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/default.spec.js && node ./test/options.spec.js"
+    "test": "node ./test/default.spec.js && node ./test/options.spec.js && node ./test/logger.spec.js",
+    "clean": "rm -rf logs simple-logs logger-logs"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,12 @@
     "logging",
     "one",
     "line",
-    "logger"
+    "logger",
+    "warn",
+    "info",
+    "fatal",
+    "error",
+    "colors"
   ],
   "author": "Neetish Raj",
   "license": "MIT",
