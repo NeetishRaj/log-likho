@@ -1,6 +1,6 @@
 {
   "name": "log-likho",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A simple file + colored stdout logger for Node.js apps.",
   "main": "index.js",
   "types": "index.d.ts",
