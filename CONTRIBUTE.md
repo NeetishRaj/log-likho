@@ -12,5 +12,13 @@ Before creating any Pull requests please follow the guidelines.
 
 ## Steps to publish (For repo admins)
 
-1. Update sem-ver in `package.json`
-2. `npm publish` (2FA needed)
+```sh
+# keep username, password and 2FA ready
+npm login
+
+# update Semver numbers: can user major or minor or patch 
+npm version minor
+git push && git push --tags
+npm publish
+
+```
