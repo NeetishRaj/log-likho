@@ -97,3 +97,24 @@ logger.log("This is a plain log message");
 | ------------- | ------ | -------- | ------------------------------------------------------ |
 | `logs_folder` | String | `./logs` | Directory to store log files                           |
 | `mode`        | String | `"a"`    | File write mode: `"a"` for append, `"w"` for overwrite |
+
+
+## Typescript Compatible
+
+`log-likho` now supports TypeScript out of the box.
+
+- Includes `index.d.ts` for type safety.
+- Works seamlessly with both JavaScript and TypeScript projects.
+- No extra setup needed — just import and use!
+
+```ts
+import log, {create_logger} from 'log-likho';
+
+const logger = create_logger();
+
+logger.info("This is an info message");
+logger.warn("This is a warning");
+logger.error("This is an error");
+logger.fatal("This is a fatal error");
+logger.log("This is a plain log message");
+```
