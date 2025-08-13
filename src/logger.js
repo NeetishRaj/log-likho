@@ -13,7 +13,7 @@ const create_logger = (options = {}) => {
     ...options,
   };
 
-  const { logs_folder, mode } = final_options;
+  const { logs_folder, mode, log_levels_to_file } = final_options;
 
   if (!fs.existsSync(logs_folder)) {
     fs.mkdirSync(logs_folder);
@@ -23,37 +23,30 @@ const create_logger = (options = {}) => {
   const log_output_path = `${logs_folder}/${dd_month_yyyy_day()}.log`;
   const log_file = fs.createWriteStream(log_output_path, { flags: mode });
 
-  function formatMessage(level, message) {
+  function format_message(level, args) {
     const timestamp = new Date().toTimeString().substring(0, 8);
-    return `[${timestamp}] [${level}] ${util.format(message)}\n`;
+    // util.format applies formatting for multiple args
+    return `[${timestamp}] [${level}] ${util.format(...args)}\n`;
+  }
+
+  function write_log(level, color, args) {
+    const formatted = format_message(level, args);
+
+    // Always write to console
+    log_stdout.write(color + formatted + COLORS.RESET);
+
+    // Conditionally write to file based on config
+    if (log_levels_to_file.includes(level)) {
+      log_file.write(formatted);
+    }
   }
 
   return {
-    info: (msg) => {
-      const formatted = formatMessage("INFO", msg);
-      log_file.write(formatted);
-      log_stdout.write(COLORS.INFO + formatted + COLORS.RESET);
-    },
-    warn: (msg) => {
-      const formatted = formatMessage("WARN", msg);
-      log_file.write(formatted);
-      log_stdout.write(COLORS.WARN + formatted + COLORS.RESET);
-    },
-    error: (msg) => {
-      const formatted = formatMessage("ERROR", msg);
-      log_file.write(formatted);
-      log_stdout.write(COLORS.ERROR + formatted + COLORS.RESET);
-    },
-    fatal: (msg) => {
-      const formatted = formatMessage("FATAL", msg);
-      log_file.write(formatted);
-      log_stdout.write(COLORS.FATAL + formatted + COLORS.RESET);
-    },
-    log: (msg) => {
-      const formatted = formatMessage("LOG", msg);
-      log_file.write(formatted);
-      log_stdout.write(formatted);
-    },
+    info: (...args) => write_log("INFO", COLORS.INFO, args),
+    warn: (...args) => write_log("WARN", COLORS.WARN, args),
+    error: (...args) => write_log("ERROR", COLORS.ERROR, args),
+    fatal: (...args) => write_log("FATAL", COLORS.FATAL, args),
+    log: (...args) => write_log("LOG", "", args),
   };
 };
 

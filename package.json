@@ -6,7 +6,8 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "node ./test/default.spec.js && node ./test/options.spec.js && node ./test/logger.spec.js",
-    "clean": "rm -rf logs simple-logs logger-logs"
+    "pretest": "npm run clean",
+    "clean": "rm -rf logs simple-logs logger-logs logger-logs-selective log-likho-ts-test"
   },
   "repository": {
     "type": "git",

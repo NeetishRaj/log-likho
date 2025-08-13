@@ -22,3 +22,12 @@ git push && git push --tags
 npm publish
 
 ```
+
+---
+## Testing
+
+To test npm package install and compatibility, can run the bash script.
+```sh
+chmod +x ./test/setup-log-likho-ts.sh
+./test/setup-log-likho-ts.sh
+```

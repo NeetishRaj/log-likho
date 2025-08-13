@@ -21,13 +21,14 @@ const simple_logger = (options = {}) => {
   }
 
   const log_output_path = `${logs_folder}/${dd_month_yyyy_day()}.log`;
-
   const log_file = fs.createWriteStream(log_output_path, { flags: mode });
 
-  return function (d) {
+  return function (...args) {
+    // util.format will handle multiple arguments & error objects nicely
     const text = `[${new Date().toTimeString().substring(0, 8)}]: ${util.format(
-      d
+      ...args
     )}\n`;
+
     log_file.write(text);
     log_stdout.write(text);
   };

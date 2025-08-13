@@ -12,8 +12,7 @@ try {
   const a = 8;
   a = 89;
 } catch (error) {
-  console.log("Logging error");
-  console.log(error);
+  console.log("Logging error", error);
 }
 
 
