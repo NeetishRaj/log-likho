@@ -150,8 +150,13 @@ logger.fatal("This will appear in console + file");
 * No extra setup needed — just import and use!
 
 ```ts
-import log, { create_logger } from 'log-likho';
+import simple_logger, { create_logger } from 'log-likho';
 
+// Simple logger
+console.log = simple_logger();
+console.log("Modifed simple logger!", {name: "neet"})
+
+// Advanced logger
 const logger = create_logger({
   logs_folder: "./logs",
   log_levels_to_file: ["ERROR", "FATAL"]
