@@ -35,5 +35,5 @@ const selectiveLogger = create_logger({
 // Log all levels — only ERROR & FATAL should appear in file
 selectiveLogger.info("This info should NOT go to file");
 selectiveLogger.warn("This warn should NOT go to file");
-selectiveLogger.error("This error SHOULD go to file");
+selectiveLogger.error("This error SHOULD go to file", new Error("something_wrong"));
 selectiveLogger.fatal("This fatal error SHOULD go to file");
